@@ -22,6 +22,7 @@ export interface ChatResponse {
   error?: string;
 }
 
+
 import { StaticImageData } from 'next/image';
 
 export interface PersonaConfig {

@@ -1,7 +1,5 @@
-import Image from "next/image";
+import MainApp from '../components/MainApp';
 
 export default function Home() {
-  return (
-   <h1>hello</h1>
-  );
+  return <MainApp />;
 }

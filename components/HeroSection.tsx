@@ -1,0 +1,193 @@
+'use client';
+
+import { Persona } from '@/types/chat';
+import { personas } from '@/lib/personas';
+import { cn } from '@/lib/utils';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import {
+  BotIcon,
+  SparklesIcon,
+  ArrowRightIcon,
+  CodeIcon,
+  MessageCircleIcon,
+  GraduationCapIcon,
+  HeartIcon,
+  GithubIcon,
+  LinkedinIcon,
+  TwitterIcon
+} from 'lucide-react';
+import Image from 'next/image';
+
+interface HeroSectionProps {
+  onSelectPersona: (persona: Persona) => void;
+}
+
+export default function HeroSection({ onSelectPersona }: HeroSectionProps) {
+  return (
+    <div className="min-h-screen bg-gray-300">
+      {/* Header */}
+      <div className="border-b border-border bg-card/30 backdrop-blur-sm animate-fadeInDown">
+        <div className="max-w-6xl mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3 animate-slideInLeft">
+              <div className="w-10 h-10 bg-gradient-to-br from-red-200 to-red-300 rounded-xl flex items-center justify-center shadow-lg animate-bounceIn hover:scale-110 transition-transform duration-200">
+                <BotIcon className="w-5 h-5 text-white" />
+              </div>
+              <div>
+                <h1 className="text-xl font-bold text-foreground flex items-center gap-2">
+                  AI Persona bot
+                  <SparklesIcon className="w-4 h-4 text-primary" />
+                </h1>
+              </div>
+            </div>
+
+            {/* Social Links */}
+            <div className="flex items-center gap-2">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="h-9 w-9 p-0 hover:bg-blue-500 rounded-full border-2 border-black"
+                onClick={() => window.open('https://github.com/AlokRai123', '_blank')}
+              >
+                <GithubIcon className="w-4 h-4" />
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="h-9 w-9 p-0 hover:bg-blue-500 rounded-full border-2 border-black"
+                onClick={() => window.open('https://www.linkedin.com/in/alok-rai-b9402a236', '_blank')}
+              >
+                <LinkedinIcon className="w-4 h-4" />
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="h-9 w-9 p-0 hover:bg-blue-500 rounded-full border-2 border-black"
+                onClick={() => window.open('https://x.com/AlokRai30903106', '_blank')}
+              >
+                <TwitterIcon className="w-4 h-4" />
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Hero Content */}
+      <div className="max-w-6xl mx-auto px-6 py-8">
+        {/* Hero Text - Compact */}
+        <div className="text-center mb-8">
+
+          <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-4 leading-tight">
+            Learn Coding with Your
+            <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+              {' '}Favorite Mentors
+            </span>
+          </h1>
+
+          <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto leading-relaxed">
+            Get personalized coding guidance from AI versions of Hitesh Choudhary and Piyush Garg in Hindi, Hinglish, or English.
+          </p>
+
+          {/* Features - Compact */}
+          <div className="flex flex-wrap justify-center gap-4 mb-8">
+            <div className="flex items-center gap-2 text-muted-foreground">
+              <MessageCircleIcon className="w-4 h-4 text-primary" />
+              <span className="text-sm">Multilingual</span>
+            </div>
+            <div className="flex items-center gap-2 text-muted-foreground">
+              <CodeIcon className="w-4 h-4 text-primary" />
+              <span className="text-sm">Code Examples</span>
+            </div>
+            <div className="flex items-center gap-2 text-muted-foreground">
+              <GraduationCapIcon className="w-4 h-4 text-primary" />
+              <span className="text-sm">Personalized</span>
+            </div>
+            <div className="flex items-center gap-2 text-muted-foreground">
+              <HeartIcon className="w-4 h-4 text-primary" />
+              <span className="text-sm">Beginner Friendly</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Mentor Selection Cards */}
+        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          {Object.values(personas).map((persona) => (
+            <Card
+              key={persona.id}
+              className="group relative overflow-hidden border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 cursor-pointer bg-card/50 backdrop-blur-sm"
+              onClick={() => onSelectPersona(persona.id)}
+            >
+              {/* Background Gradient */}
+              <div className={cn(
+                "absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity",
+                persona.color.replace('bg-', 'bg-gradient-to-br from-') + ' to-transparent'
+              )} />
+
+              <div className="relative p-6">
+                {/* Header */}
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <Image
+                      width={32}
+                      height={32}
+                      src={persona.avatar}
+                      alt={persona.name}
+                      className="w-12 h-12 rounded-xl shadow-lg group-hover:scale-110 transition-transform object-cover"
+                    />
+                    <div>
+                      <h3 className="text-xl font-bold text-foreground mb-1">
+                        {persona.name}
+                      </h3>
+                      <Badge variant="outline" className="text-xs">
+                        AI Mentor
+                      </Badge>
+                    </div>
+                  </div>
+                  {/* <div className="flex items-center gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <StarIcon key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div> */}
+                </div>
+
+                {/* Description */}
+                <p className="text-muted-foreground mb-4 leading-relaxed text-sm">
+                  {persona.description}
+                </p>
+
+                {/* CTA Button */}
+                <Button
+                  className="w-full group-hover:shadow-lg transition-all duration-300"
+                  size="default"
+                >
+                  <span>Start Talking with {persona.displayName}</span>
+                  <ArrowRightIcon className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </div>
+
+              {/* Hover Effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+            </Card>
+          ))}
+        </div>
+
+        {/* Bottom CTA - Compact */}
+        <div className="text-center mt-8">
+          <div className="flex justify-center gap-2">
+            <Badge variant="outline" className="text-xs">
+              🇮🇳 Hindi
+            </Badge>
+            <Badge variant="outline" className="text-xs">
+              🌏 Hinglish
+            </Badge>
+            <Badge variant="outline" className="text-xs">
+              🇺🇸 English
+            </Badge>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
