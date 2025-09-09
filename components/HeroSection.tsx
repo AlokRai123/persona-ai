@@ -81,7 +81,7 @@ export default function HeroSection({ onSelectPersona }: HeroSectionProps) {
 
           <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-4 leading-tight">
             Learn Coding with Your
-            <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
               {' '}Favorite Mentors
             </span>
           </h1>
