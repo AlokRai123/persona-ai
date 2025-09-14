@@ -174,7 +174,7 @@ export default function ModernChatInterface({
   };
 
   return (
-    <div className="flex flex-col h-screen bg-background animate-fadeIn">
+    <div className="flex flex-col h-screen bg-gray-300 animate-fadeIn">
       {/* Header */}
       <div className="border-b border-border bg-card/30 backdrop-blur-sm animate-fadeInDown">
         <div className="max-w-3xl mx-auto px-6 py-4">
@@ -190,17 +190,14 @@ export default function ModernChatInterface({
                 <ArrowLeftIcon className="w-5 h-5" />
               </Button>
             )}
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
-              <BotIcon className="w-5 h-5 text-white" />
-            </div>
+            <div className="w-10 h-10 bg-gradient-to-br from-red-200 to-red-300 rounded-xl flex items-center justify-center shadow-lg animate-bounceIn hover:scale-110 transition-transform duration-200">
+                <BotIcon className="w-5 h-5 text-white" />
+              </div>
             <div>
-              <h1 className="text-xl font-bold text-foreground flex items-center gap-2">
-                AI Coding Mentors
-                <SparklesIcon className="w-4 h-4 text-primary" />
-              </h1>
-              <p className="text-sm text-muted-foreground">
-                Learn coding with Hitesh Choudhary and Piyush Garg
-              </p>
+             <h1 className="text-xl font-bold text-foreground flex items-center gap-2">
+                  AI Persona bot
+                  <SparklesIcon className="w-4 h-4 text-primary" />
+                </h1>
             </div>
           </div>
         </div>

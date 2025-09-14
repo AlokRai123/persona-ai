@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
-import { writeFile,readFile } from "fs/promises";
+import { writeFile } from "fs/promises";
 import { join } from "path";
 import { existsSync,mkdirSync } from "fs";
 import crypto from "crypto";
 
 // Dynamic ElevenLabs client initialization
 import type { ElevenLabsClient } from "@elevenlabs/elevenlabs-js";
-import { error } from "console";
+// import { error } from "console";
 let elevenlabs: ElevenLabsClient | null = null;
 
 async function getElevenLabsClient(){
